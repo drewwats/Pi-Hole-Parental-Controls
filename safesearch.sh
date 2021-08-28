@@ -137,6 +137,11 @@ function createarrays
         "cname=www.youtube-nocookie.com,restrict.youtube.com"
     )
 
+    # Download Google Domain list into an array
+    logger all "Retrieving complete list of Google domains..."
+    google_domains=($(curl $google_urls 2>/dev/null))
+
+    # Create array from $blocked_domain_list entries
     blocked_domain_array=()
     mapfile -t blocked_domains < $blocked_domain_list
     for blocked_domain in "${blocked_domains[@]}"; do
@@ -146,6 +151,7 @@ function createarrays
         fi
     done
 
+    # Create array from $blocked_word_list entries
     blocked_word_array=()
     mapfile -t blocked_words < $blocked_word_list
     for blocked_word in "${blocked_words[@]}"; do
@@ -163,16 +169,17 @@ function createarrays
         fi
     done
 
+    # Create array from $blocked_engine_list entries
     blocked_engine_array=()
     mapfile -t blocked_engines < $blocked_engine_list
-    for blocked_engine in "${blocked_engine[@]}"; do
+    for blocked_engine in "${blocked_engines[@]}"; do
         firstchar=$(echo $blocked_engine | cut -c1)
         if [ $firstchar != '#' ]; then
             blocked_engine_array+=("$blocked_engine")
         fi
     done
 
-    # This is not working yet
+    # This is not working at the moment
     #redirected_domain_array=()
     #mapfile -t redirected_domains < $redirected_domain_list
     #for redirected_domain in "${redirected_domains[@]}"; do
@@ -189,23 +196,9 @@ function createarrays
 }
 
 
-function usercheck
+
+function outfile
 {
-
-    if [ "$?" -ne 0 ];then 
-        logger out "This script must be ran with root privileges. Exiting..."
-        exit 1
-    fi
-
-}
-
-
-function generate
-{
-
-    # Download List into an Array
-    logger all "Retrieving complete list of Google domains..."
-    google_domains=($(curl $google_urls 2>/dev/null))
 
     # Append File Header
     echo "# $out_file generated on $(date '+%m/%d/%Y %H:%M') by $(hostname)" > $out_file
@@ -292,7 +285,6 @@ function disableprotection
     pihole -b -d --wild "${blocked_domain_array[@]}"
     pihole -b -d --wild "${blocked_engine_array[@]}"
     pihole -b -d --regex "${blocked_word_array[@]}"
-    #pihole -b --regex --nuke
 
     logger all "Restarting DNS..."
     pihole restartdns
@@ -330,5 +322,5 @@ checkuser
 cleanup
 grabips
 createarrays
-generate
+outfile
 routeaccordingly

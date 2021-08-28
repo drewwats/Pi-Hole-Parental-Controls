@@ -18,9 +18,10 @@ activesearchresults.com
 apexoo.com
 blackle.com
 cluuz.com
-webcenters.netscape.compuserve.com/search/default.jsp
+netscape.com
+webcenters.netscape.compuserve.com
 entireweb.com
-exalead.com/search
+exalead.com
 hotbot.com
 lexxe.com
 mojeek.com
@@ -67,7 +68,7 @@ picsearch.com
 qualityimagesearch.com
 behold.cc
 compfight.com
-labnol.org/image-search
+labnol.org
 picfog.com
 pixolu.de
 twicsy.com
@@ -76,7 +77,7 @@ web.stagram.com
 everystockphoto.com
 picfindr.com
 facesaerch.com
-picturesearch.imense.com
+imense.com
 tineye.com
 vector.us
 findicons.com
@@ -104,7 +105,7 @@ spokeo.com
 sysoon.com
 wink.com
 zoominfo.com
-goonux.cristalys.com/fr/index_en.php3
+ristalys.com
 merobase.com
 roozzy.com
 rsssearchhub.com
@@ -114,13 +115,13 @@ shodanhq.com
 surfwax.com
 swoogle.umbc.edu
 sengine.info
-search.thunderstone.com/texis/websearch
+thunderstone.com
 colorof.com
 ecofreek.com
 eudict.eu
 factbites.com
 faroo.com
-startupbin.com/google-google
+startupbin.com
 greenmaven.com
 querycat.com
 seeks-project.info
@@ -152,7 +153,7 @@ apollo7.co.uk
 search.carrot2.org
 cosmoage.com
 devilfinder.com
-elocalfinder.com/HSearch.aspx
+elocalfinder.com
 finday.com
 forelook.com
 fuzzfind.com
@@ -160,7 +161,7 @@ geegain.com
 gokookygo.net
 goofram.com
 gopher.com
-harvester42.fzk.de/jss/Harvester42
+fzk.de
 inetmonster.com
 iboogie.com
 info.com
@@ -170,7 +171,7 @@ mamma.com
 metabear.ru
 metacrawler.com
 monstercrawler.com
-fqs.opentext.com/web.htm
+fqs.opentext.com
 polymeta.com
 qrobe.it
 roysearch.com
@@ -199,7 +200,7 @@ biglobe.ne.jp
 ceek.jp
 fresheye.com
 goo.ne.jp
-bach.istc.kobe-u.ac.jp/metcha
+bach.istc.kobe-u.ac.jp
 spysee.jp
 daum.net
 nate.com
@@ -231,7 +232,7 @@ clewwa.de
 deligoo.de
 deutscheseiten.de
 die-kraehe.de
-digibib.net/Digibib?LOCATION=361
+digibib.net
 discounto.de
 fastbot.de
 financiero.de
@@ -386,11 +387,11 @@ odiasearch.com
 squishysquashysearch.com
 oscobo.co.uk
 hulbee.com
-metager.de/en
+metager.de
 wow.com
 alhea.com
 search.lilo.org
 unbubble.eu
 mindworks.alterivsta.org
 zeppy.io
-app.traveltimeplatform.com/#
+app.traveltimeplatform.com
