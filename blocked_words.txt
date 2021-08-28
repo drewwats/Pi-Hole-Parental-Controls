@@ -1,16 +1,11 @@
 # A BUNCH OF SEX WORDS 
-# Trimmied down version of https://raw.githubusercontent.com/RobertJGabriel/Google-profanity-words/master/list.txt
+# Trimmed down version of https://raw.githubusercontent.com/RobertJGabriel/Google-profanity-words/master/list.txt
 anal
-anus
-asshole
 ballbag
 ballsack
 bastard
 beastial
-beastiality
 bestial
-bestiality
-bitch
 blow job
 blowjob
 boner
@@ -34,10 +29,8 @@ cunilingus
 cunillingus
 cunnilingus
 cunt
-cyalis
 cyber
 d1ck
-damn
 dick
 dildo
 dlck
@@ -49,17 +42,12 @@ doosh
 douche
 duche
 dyke
-ejaculate
-ejaculating 
-ejaculation
-f u c k
+ejaculat
 fag
 fcuk
 fellatio
 finger bang
 fingerbang
-finger fuck
-fingerfuck 
 fisting
 fuck
 fudge packer
@@ -85,10 +73,8 @@ labia
 lebian
 lust
 masochist
-masterbate
-masterbation
+masterbat
 masturbate
-masturbation
 mofo
 muff
 nigga
@@ -98,18 +84,15 @@ nutsack
 orgasim 
 orgasm
 p0rn
-pecker
 penis
 phuck
 phuk
-piss
 porn
 prick
 pron
 pussies
 pussy
 pussys 
-rectum
 rimming
 sadist
 schlong
@@ -132,24 +115,21 @@ teets
 testical
 testicle
 tits
-titt
+titty
 titties
 transgender
 tw4t
 twat
-v14gra
-v1gra
 vagina
-viagra
 vibrator
 vulva
 wang
 wank
 whoar
 whore
-xrated
+x rated
 xxx
-# Test
+# Test filter for my horndog pre-teen
 cute boys
 cuteboys
 cute guys

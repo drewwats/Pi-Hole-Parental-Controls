@@ -24,16 +24,18 @@ work_dir="/root/safesearch/"
 this_file=$work_dir"safesearch.sh"
 out_file=$work_dir"safesearch.tmp"
 log_file=$work_dir"safesearch.log"
-host_file="/etc/hosts"
+hosts_file="/etc/hosts"
 conf_file="/etc/dnsmasq.d/09-restrict.conf"
 blocked_word_list=$work_dir"blocked_words.txt"
 blocked_domain_list=$work_dir"blocked_domains.txt"
 blocked_engine_list=$work_dir"blocked_engines.txt"
 google_urls="https://www.google.com/supported_domains"
 
-# Unused or for reference
+
+# Source list for profanity filter, pre-modification
 #profanity_url="raw.https://github.com/RobertJGabriel/Google-profanity-words/blob/master/list.txt"
-#redirected_domain_list=$work_dir"redirected_domains.txt"
+
+# Source list for non-Google search engines, pre-modification
 #blocked_engines=$(curl -s https://gist.githubusercontent.com/NaveenDA/b1ff7d43812a3c79354f9b2fd9868186/raw/ec32665ac11d5b8085dc1b5842ad82ad35cd1396/List-of-search-engine.json | jq -r '.[].url' | sed 's/http:\/\///g' | sed 's/www\.//g')
 
 
@@ -113,6 +115,8 @@ function grabips
 
     google_safe_ip=$(dig -4 +short forcesafesearch.google.com @8.8.8.8 | \
         grep -E "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | head -n 1)
+    duck_safe_ip=$(dig -4 +short safe.duckduckgo.com @8.8.8.8 | \
+         grep -E "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | head -n 1)
     youtube_safe_ip=$(dig -4 +short restrict.youtube.com @8.8.8.8 | \
          grep -E "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | head -n 1)
 
@@ -123,18 +127,26 @@ function createarrays
 {
 
     # Set IPs for safe URLs
+    # Intentionally removing "host-record=safe.duckduckgo.com,$duck_safe_ip"
     host_records=(
         "host-record=forcesafesearch.google.com,$google_safe_ip"
         "host-record=restrict.youtube.com,$youtube_safe_ip"
     )
 
     # Force redirection of normal URLs to safe URL's IP
+    duck_cnames=(
+        "cname=duckduckgo.com,www.duckduckgo.com,safe.duckduckgo.com"
+        "cname=start.duckduckgo.com,safe.duckduckgo.com"
+        "cname=duck.com,www.duck.com,safe.duckduckgo.com"
+    )
+
+    # Force redirection of normal URLs to safe URL's IP
     youtube_cnames=(
-        "cname=www.youtube.com,restrict.youtube.com"
+        "cname=youtube.com,www.youtube.com,restrict.youtube.com"
         "cname=m.youtube.com,restrict.youtube.com"
         "cname=youtubei.googleapis.com,restrict.youtube.com"
         "cname=youtube.googleapis.com,restrict.youtube.com"
-        "cname=www.youtube-nocookie.com,restrict.youtube.com"
+        "cname=youtube-nocookie.com,www.youtube-nocookie.com,restrict.youtube.com"
     )
 
     # Download Google Domain list into an array
@@ -225,6 +237,12 @@ function outfile
     for cname in "${youtube_cnames[@]}"; do
         echo $cname >> $out_file
     done
+
+    # DuckDuckGo SafeSearch
+    logger all "Staging DuckDuckGo redirects..."
+    for cname in "${duck_cnames[@]}"; do
+        echo $cname >> $out_file
+    done
     
 }
 
@@ -264,6 +282,15 @@ function enableprotection
     pihole -b --wild "${blocked_engine_array[@]}"
     pihole -b --regex "${blocked_word_array[@]}"
 
+    logger all "Adding SafeSearch entries in $hosts_file..."
+    for record in "${host_records[@]}"; do
+        ip=$(echo $record | cut -d',' -f2)
+        url=$(echo $record | cut -d',' -f1 | cut -d'=' -f2)
+        if ! grep -Fxq "$url" $hosts_file; then
+            printf "$ip\t\t$url\n" >> $hosts_file
+        fi
+    done    
+
     logger all "Restarting Pi-Hole DNS..."
     pihole restartdns
 
@@ -286,6 +313,13 @@ function disableprotection
     pihole -b -d --wild "${blocked_engine_array[@]}"
     pihole -b -d --regex "${blocked_word_array[@]}"
 
+    logger all "Removing SafeSearch entries from $hosts_file..."
+    for record in "${host_records[@]}"; do
+        ip=$(echo $record | cut -d',' -f2)
+        url=$(echo $record | cut -d',' -f1 | cut -d'=' -f2)
+        sed -i "/$url/d" $hosts_file
+    done
+
     logger all "Restarting DNS..."
     pihole restartdns
 
@@ -307,7 +341,14 @@ function nukeprotection
     pihole -b --regex --nuke
     pihole -b --wild --nuke
 
-    logger all "If you're one of the lucky ones, you're about to have unrestricted internet..."
+    logger all "Removing SafeSearch entries from $hosts_file..."
+    for record in "${host_records[@]}"; do
+        ip=$(echo $record | cut -d',' -f2)
+        url=$(echo $record | cut -d',' -f1 | cut -d'=' -f2)
+        sed -i "/$url/d" $hosts_file
+    done
+
+    logger all "If you're still with us, you will soon have unrestricted internet..."
     logger all "Restarting DNS..."
     pihole restartdns
 
