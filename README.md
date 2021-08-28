@@ -26,6 +26,8 @@ Blacklisting of 400+ other search engines
  
  Slightly Vague Install Instructions:
  1. Make sure you have Pi-Hole up and running as local DNS server
+    - Devices pointing to router
+    - Router pointing to Pi-Hole
  2. Clone this repo and cd into it
  3. chmod +x ./safesearch.sh
  4. ./safesearch.sh enable
