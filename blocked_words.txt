@@ -1,16 +1,5 @@
 # A BUNCH OF SEX WORDS 
 # Trimmied down version of https://raw.githubusercontent.com/RobertJGabriel/Google-profanity-words/master/list.txt
-# The dumb stuff
-cute boys
-cuteboys
-cute guys
-hot boys
-hotboys
-hot huys
-fine boys
-fineboys
-fine guys
-# The really bad stuff
 anal
 anus
 asshole
@@ -160,3 +149,13 @@ whoar
 whore
 xrated
 xxx
+# Test
+cute boys
+cuteboys
+cute guys
+hot boys
+hotboys
+hot guys
+fine boys
+fineboys
+fine guys
