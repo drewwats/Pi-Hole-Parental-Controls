@@ -80,7 +80,7 @@ function checkinput
 }
 
 
-function usercheck
+function checkuser
 {
 
     if [ "$?" -ne 0 ];then
@@ -326,7 +326,7 @@ function nukeprotection
 	
 
 checkinput
-usercheck
+checkuser
 cleanup
 grabips
 createarrays
