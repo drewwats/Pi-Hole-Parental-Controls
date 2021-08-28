@@ -130,6 +130,7 @@ function createarrays
     # Intentionally removing "host-record=safe.duckduckgo.com,$duck_safe_ip"
     host_records=(
         "host-record=forcesafesearch.google.com,$google_safe_ip"
+        "host-record=safe.duckduckgo.com,$duck_safe_ip"
         "host-record=restrict.youtube.com,$youtube_safe_ip"
     )
 
@@ -293,6 +294,7 @@ function enableprotection
 
     logger all "Restarting Pi-Hole DNS..."
     pihole restartdns
+    pihole restartdns reload
 
     logger all "Pi-Hole SafeSearch is Enabled."
 
@@ -322,6 +324,7 @@ function disableprotection
 
     logger all "Restarting DNS..."
     pihole restartdns
+    pihole restartdns reload
 
     logger all "Pi-Hole SafeSearch is Disabled."
 
@@ -351,6 +354,7 @@ function nukeprotection
     logger all "If you're still with us, you will soon have unrestricted internet..."
     logger all "Restarting DNS..."
     pihole restartdns
+    pihole restartdns reload
 
     logger all "Pi-Hole SafeSearch has been utterly demolished."
 

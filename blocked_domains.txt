@@ -1,4 +1,5 @@
-# SEARCH ENGINES
 # TIME WASTERS
 tiktok.com
-# BAD STUFF
+snapchat.com
+# MEETUP SITES 
+# BAD STUFF (Most of these are covered in blocked_words.txt)

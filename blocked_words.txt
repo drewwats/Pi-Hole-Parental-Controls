@@ -1,5 +1,11 @@
-# A BUNCH OF SEX WORDS 
+#
 # Trimmed down version of https://raw.githubusercontent.com/RobertJGabriel/Google-profanity-words/master/list.txt
+#
+#
+# Site-specific blocks
+#
+# Domains with these words will be blocked 
+#
 anal
 ballbag
 ballsack
@@ -65,6 +71,7 @@ jerkoff
 jism
 jiz 
 jizz
+kink
 kock
 kondum
 kum
@@ -110,6 +117,8 @@ slut
 smut
 snatch
 spunk
+stranger
+suicide
 t1tties
 teets
 testical
@@ -129,13 +138,3 @@ whoar
 whore
 x rated
 xxx
-# Test filter for my horndog pre-teen
-cute boys
-cuteboys
-cute guys
-hot boys
-hotboys
-hot guys
-fine boys
-fineboys
-fine guys
